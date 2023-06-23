@@ -1,0 +1,9 @@
+apiVersion: gcp.test.upbound.io/v1alpha1
+kind: ServiceAccount
+metadata:
+  name: migration-test
+  namespace: default
+spec:
+  serviceAccountName: {{SA_NAME}}
+  writeConnectionSecretToRef:
+    name: migration-test-conn
