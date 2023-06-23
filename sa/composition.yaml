@@ -1,0 +1,23 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: xserviceaccounts.gcp.test.upbound.io
+spec:
+  writeConnectionSecretsToNamespace: upbound-system
+  compositeTypeRef:
+    apiVersion: gcp.test.upbound.io/v1alpha1
+    kind: XServiceAccount
+  resources:
+    - name: serviceAccount
+      base:
+        apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+        kind: ServiceAccount
+      patches:
+        - fromFieldPath: spec.serviceAccountName
+          toFieldPath: metadata.name
+        - fromFieldPath: spec.serviceAccountName
+          toFieldPath: spec.forProvider.displayName
+          transforms:
+          - type: string
+            string:
+              fmt: "Service Account for %s"
