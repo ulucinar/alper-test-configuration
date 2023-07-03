@@ -21,3 +21,13 @@ spec:
           - type: string
             string:
               fmt: "Service Account for %s"
+    - name: resourceGroup
+      base:
+        apiVersion: azure.upbound.io/v1beta1
+        kind: ResourceGroup
+        spec:
+          forProvider:
+            location: "West Europe"
+      patches:
+        - fromFieldPath: spec.resourceGroupName
+          toFieldPath: metadata.name

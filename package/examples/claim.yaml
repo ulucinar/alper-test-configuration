@@ -4,6 +4,7 @@ metadata:
   name: migration-test
   namespace: default
 spec:
-  serviceAccountName: {{SA_NAME}}
+  serviceAccountName: alper-migration-test
+  resourceGroupName: alper-migration-test
   writeConnectionSecretToRef:
     name: migration-test-conn

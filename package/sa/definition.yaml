@@ -24,5 +24,9 @@ spec:
               serviceAccountName:
                 type: string
                 description: Name of the IAM service account.
+              resourceGroupName:
+                type: string
+                description: Name of the Azure resource group.
             required:
             - serviceAccountName
+            - resourceGroupName
